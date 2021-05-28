@@ -1,15 +1,46 @@
+console.log('JavaScript loaded!');
 $(document).ready(function(){
-  console.log('jQuery sourced.');
-  refreshBooks();
+  console.log('jQuery loaded!');
+  // refreshDom();
   addClickHandlers();
-});
+}); // End document ready. 
 
 function addClickHandlers() {
-  $('#submitBtn').on('click', handleSubmit);
-  // TODO - Add code for edit & delete buttons
-  $( '#bookShelf' ).on( 'click', '.deleteButtons', deleteHandler );
-  $( '#bookShelf' ).on( 'click', '.readButtons', readHandler );
+  $( '#taskInputArea' ).on( 'click', $('#submitButton'), clickedSubmit )
 }
+
+function clickedSubmit() {
+  console.log( 'In clickedSubmit' );
+  let task = {};
+  task.name = $('#taskInput').val();
+  $.ajax
+
+} // End clickedSubmit function. 
+
+function handleSubmit() {
+  console.log('Submit button clicked.');
+  let book = {};
+  book.author = $('#author').val();
+  book.title = $('#title').val();
+  addBook(book);
+} // End handleSubmit()
+
+// adds a book to the database
+function addBook(bookToAdd) {
+  $.ajax({
+    type: 'POST',
+    url: '/books',
+    data: bookToAdd,
+    }) // End .ajax
+      .then(function(response) {
+        console.log('Response from server.', response);
+        refreshBooks();
+    }) // End .then
+      .catch(function(error) {
+        console.log('Error in POST', error)
+        alert('Unable to add book at this time. Please try again later.');
+    }); // End .catch
+} // End addBook()
 
 // Function to handle the click event and pass the book id to the deleteBook function:
 function readHandler() {
@@ -58,30 +89,7 @@ function deleteBook(bookId) {
     }); // End .catch
 } // End deleteBook()
 
-function handleSubmit() {
-  console.log('Submit button clicked.');
-  let book = {};
-  book.author = $('#author').val();
-  book.title = $('#title').val();
-  addBook(book);
-} // End handleSubmit()
 
-// adds a book to the database
-function addBook(bookToAdd) {
-  $.ajax({
-    type: 'POST',
-    url: '/books',
-    data: bookToAdd,
-    }) // End .ajax
-      .then(function(response) {
-        console.log('Response from server.', response);
-        refreshBooks();
-    }) // End .then
-      .catch(function(error) {
-        console.log('Error in POST', error)
-        alert('Unable to add book at this time. Please try again later.');
-    }); // End .catch
-} // End addBook()
 
 // refreshBooks will get all books from the server and render to page
 function refreshBooks() {

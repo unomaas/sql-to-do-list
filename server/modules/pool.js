@@ -6,7 +6,8 @@
 /* the only line you likely need to change is
  database: 'prime_app',
  change `prime_app` to the name of your database, and you should be all set!
-*/const pg = require('pg');
+*/
+const pg = require('pg');
 const url = require('url');let config = {};// We need a different pg configuration if we're running
 // on Heroku, vs if we're running locally.
 //
@@ -24,7 +25,7 @@ if (process.env.DATABASE_URL) {
   config = {
     host: 'localhost',
     port: 5432,
-    database: 'prime_app', // CHANGE THIS LINE to match your local database name!
+    database: 'T2W9_ToDoList', // CHANGE THIS LINE to match your local database name!
   };
 }// this creates the pool that will be shared by all other modules
 const pool = new pg.Pool(config);// the pool will log when it connects to the database
