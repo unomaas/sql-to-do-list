@@ -1,14 +1,15 @@
+// ⬇ All server setup below: 
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 const tasksRouter = require('./routes/tasks.router.js');
 app.use(bodyParser.urlencoded({extended: true}));
-// Serve back static files by default
+// ⬇ Serve back static files by default:
 app.use(express.static('server/public'))
-// ROUTES
+// ⬇ Routes below:
 app.use('/tasks', tasksRouter);
-// Start listening for requests on a specific port
+// ⬇ Start listening for requests on a specific port:
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
 });
