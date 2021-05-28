@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Awesome Reads</title>
+  <script type="text/javascript" src="vendors/jquery.js"></script>
+  <script type="text/javascript" src="scripts/client.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Awesome Reads</h1>
+  </header>
+  <main>
+    <section>
+      <h3>Add New Book</h3>
+      <label>Title:</label><input type="text" name="" value="" id="title" size="50">
+      <br />
+      <label>Author:</label><input type="text" name="" value="" id="author" size="50">
+      <br />
+      <button type="button" id="submitBtn">Submit</button>
+    </section>
+    <section>
+      <div>
+        <h3>Book List</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>You've Read This</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="bookShelf">
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

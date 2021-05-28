@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background-color: brown;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+h1 {
+  margin: 0;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+}
+
+section {
+  background-color: linen;
+  padding: .5em;
+  margin-bottom: 1em;
+}
+
+th {
+  text-align: left;
+}
+
+
