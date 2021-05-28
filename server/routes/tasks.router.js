@@ -1,18 +1,26 @@
+//#region ⬇⬇ Document setup below:
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
+//#endregion ⬆⬆ Document setup above. 
 
-// Get all books
+
+//#region ⬇⬇ All CRUD routes below:
+// ⬇ /tasks GET functionality below:
 router.get('/', (req, res) => {
-  let queryText = 'SELECT * FROM "books" ORDER BY "title";';
-  pool.query(queryText).then(result => {
-    // Sends back the results in an object
-    res.send(result.rows);
-  })
-  .catch(error => {
-    console.log('error getting books', error);
-    res.sendStatus(500);
-  });
+  console.log('In /tasks router GET');
+  // ⬇ Declaring the SQL commands below:
+  let queryText = `SELECT * FROM "tasks" ORDER BY "id";`;
+  pool.query(queryText)
+    .then(result => {
+      console.log('In /tasks GET .then, response:', res);
+      // ⬇ Sends back the results in an object, we always want rows:
+      res.send(result.rows);
+    }) // End .then
+    .catch(error => {
+      console.log('In /tasks GET .catch, error:', error);
+      res.sendStatus(500); // Server error. 
+    }); // End .catch
 });
 
 // Adds a new book to the list of awesome reads
@@ -86,5 +94,7 @@ router.delete( "/:id", ( req, res ) => {
       res.sendStatus( 500 );
     }); // End .catch
 }) // End router.delete
+//#endregion ⬆⬆ All CRUD routes above. 
+
 
 module.exports = router;
