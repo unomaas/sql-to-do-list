@@ -7,9 +7,11 @@ CREATE TABLE "tasks" (
 );
 
 INSERT INTO "tasks" 
-	("name", "complete") 
+	("name") 
 VALUES 
-	('Wake Up', 'false'),
-	('Grab a brush & put on a little make-up', 'false');
+	('Wake Up'),
+	('Grab a brush & put on a little make-up'),
+  ('Hide the scars to fade away the shake-up'),
+  ('Why''d you leave the keys upon the table?');
 
 SELECT * FROM "tasks";
