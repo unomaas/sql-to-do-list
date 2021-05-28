@@ -1,31 +1,11 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.inline {
+  display: inline;
 }
-
-header {
-  background-color: brown;
-  padding: 1em;
-  margin-bottom: 1em;
-}
-
+ 
 h1 {
-  margin: 0;
+  color: red;
 }
 
-main {
-  width: 90%;
-  margin: auto;
+ul {
+  list-style-type: none;
 }
-
-section {
-  background-color: linen;
-  padding: .5em;
-  margin-bottom: 1em;
-}
-
-th {
-  text-align: left;
-}
-
-
