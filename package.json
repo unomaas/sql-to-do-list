@@ -1,7 +1,7 @@
 {
   "name": "antares_pg_intro",
   "version": "1.0.0",
-  "description": "",
+  "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,5 +18,10 @@
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "pg": "^8.2.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unomaas/weekend-sql-to-do-list.git"
   }
 }
