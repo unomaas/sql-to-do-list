@@ -68,7 +68,7 @@ router.put('/:id', (req, res) => {
     res.sendStatus(500);
     return; // Break early if bad.
   } // End if statement.
-  // ⬇ taskId needs to be an array:
+  // ⬇ taskId (aka $1) value needs to be sent as an array:
   pool.query(queryText, [taskId])
     .then(response => {
       console.log('Marked complete on task ID:', taskId);
@@ -81,9 +81,7 @@ router.put('/:id', (req, res) => {
 }); // End /tasks PUT
 
 
-// TODO - DELETE 
-// Removes a book to show that it has been read
-// Request must include a parameter indicating what book to update - the id
+
 // ⬇ /tasks DELETE functionality below:
 router.delete("/:id", (req, res) => {
   console.log('In /tasks router DELETE');
@@ -92,7 +90,7 @@ router.delete("/:id", (req, res) => {
   console.log('Task to delete is:', taskId);
   // ⬇ Creating queryText to send to SQL:
   let queryText = `DELETE FROM "tasks" WHERE "tasks".id = $1;`;
-  // ⬇ taskId needs to be an array:
+  // ⬇ taskId (aka $1) value needs to be sent as an array:
   pool.query(queryText, [taskId])
     .then(response => {
       console.log('Deleted the task with ID:', taskId);

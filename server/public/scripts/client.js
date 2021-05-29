@@ -1,14 +1,16 @@
 //#region ⬇⬇ All document setup & event handlers below:
-// ⬇ Document setup below:
+// ⬇ Document setup:
 console.log('JavaScript loaded!');
 $(document).ready(function () {
   console.log('jQuery loaded!');
   refreshDom();
   addEventHandlers();
-}); // End document ready
+}); // End document setup
 
 
-// ⬇ Event handlers below:
+/** ⬇ Event handlers:
+ * Function to contain all of the event handlers on the page. 
+ */
 function addEventHandlers() {
   $('#taskInputArea').on('click', '#submitButton', clickedSubmit);
   $('#taskOutput').on('click', '.completeBoxes', clickedComplete);
@@ -19,7 +21,9 @@ function addEventHandlers() {
 
 
 //#region ⬇⬇ All CRUD functions below:
-// ⬇ refreshDom GET functionality below:
+/** ⬇ refreshDom GET functionality:
+ * Function that runs on document ready page load.  Connects to the database and pulls all tasks to render on page.  Each task row comes with a complete checkbox, task name, edit button, and delete button. 
+ */
 function refreshDom() {
   console.log('In refreshDom');
   // ⬇ Getting the data from the server to load on page:
@@ -55,7 +59,10 @@ function refreshDom() {
 } // End refreshDom()
 
 
-// ⬇ clickedSubmit POST functionality below:
+
+/** ⬇ clickedSubmit POST functionality:
+ * Function to add a task to the list, triggered by the user clicking the "ADD" button with text in the task input field.  Task cannot be added if input field is blank.  Once done, it should add the task to the bottom of the task list.  This is reversible by clicking delete for that specific task.  
+ */
 function clickedSubmit() {
   console.log('In clickedSubmit');
   // ⬇ Declaring empty object variable to hold the task input:
@@ -78,7 +85,9 @@ function clickedSubmit() {
 } // End clickedSubmit() 
 
 
-// ⬇ clickedComplete PUT functionality below:
+/** ⬇ clickedComplete PUT functionality:
+ * Function to mark a task as complete, triggered by the user clicking the checkbox input.  Once done, it should change the background color of the task and strike-through the text.  This is reversible by un-checking the same checkbox input. 
+ */
 function clickedComplete() {
   console.log('In clickedComplete');
   // ⬇ Saving the clicked task id to a variable: 
@@ -104,7 +113,9 @@ function clickedComplete() {
 }// End clickedComplete()
 
 
-// ⬇ clickedDelete DELETE functionality below:
+/** ⬇ clickedDelete DELETE functionality:
+ * Function to delete a task from the DOM and DB, triggered by the user clicking the delete button.  Once done, it is not reversible. 
+ */
 function clickedDelete() {
   console.log('In clickedDelete');
   // ⬇ Saving the clicked task id to a variable: 
@@ -125,29 +136,4 @@ function clickedDelete() {
     }); // End .catch
 } // End clickedDelete()
 //#endregion ⬆⬆ All CRUD functions above. 
-
-
-
-
-// // Function to handle the click event and pass the book id to the deleteBook function:
-// function deleteHandler() {
-//   console.log('In deleteHandler');
-//   deleteBook($(this).data("id"));
-// } // End deleteHandler()
-
-// function deleteBook(bookId) {
-//   console.log('In deleteBook');
-//   $.ajax({
-//     method: 'DELETE',
-//     url: `/books/${bookId}`,
-//   }) // End .ajax
-//     .then(response => {
-//       console.log('In DELETE /books/id. Response:', response);
-//       refreshBooks();
-//     }) // End .then
-//     .catch(error => {
-//       console.log('In DELETE /books/id. Error:', error);
-//       alert(`There was a problem deleting that book, please try again:`, error);
-//     }); // End .catch
-// } // End deleteBook()
 
