@@ -47,13 +47,14 @@ function refreshDom() {
         // ⬇ For each task, append a new row to the table:
         $('#taskOutput').append(`
           <tr>
-            <td><input type="checkbox" class="completeBoxes btn btn-success" data-id="${task.id}"></td>
+            <td><input type="checkbox" class="completeBoxes btn btn-success" id="box${task.id}" data-id="${task.id}"></td>
             <td>${task.name}</td>
             <td><button class="deleteButtons btn btn-danger" data-id="${task.id}">${trashIcon}</button></td>
           </tr>
         `); // End #taskOutput append.
         if (task.complete === true) {
           // document.getElementById("taskComplete").checked = true;
+          $(`#box${task.id}`).prop('checked', true);
         }
       } // End for loop.
     }) // End .then
