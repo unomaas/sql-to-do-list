@@ -12,39 +12,35 @@
 
 <body>
  
-  <header>
-    <h3 class="inline">To Do List App </h3><h6 class="inline">v1.0</h6>
-  </header><br><br>
+  <div id="headerWrapper">
+    <header>
+      <h3 style="display: inline;">To Do List App </h3><h6 style="display: inline;">v1.0</h6>
+    </header>
+  </div>
 
   <!-- ⬇ Input Area Below: -->
   <main id="taskInputArea">
-    <h1>Now Viewing Your To Do List</h1>
-    <h4>Add An Item To This List</h4>
+    <h1 id="heading">Now Viewing Your To Do List</h1>
+    <h4 id="subHeading">Add An Item To This List</h4>
     <input id="taskInput"type="text" placeholder="Enter a Task Name">
-    <button id="submitButton">ADD</button>
-  </main><br>
+    <button id="submitButton" class="btn btn-primary">ADD</button>
+  </main>
 
   <!-- ⬇ Output Area Below: -->
-  <section>
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Task</th>
-          <th colspan="2">Edit & Delete</th>
-        </tr>
-      </thead>
-      <tbody id="taskOutput">
-        <!-- ⬇ Each TR will be appended below: -->
-        <!-- <tr>
-          <td><input type="checkbox"></td>
-          <td>Wake up, grab a brush & put on a little make-up</td>
-          <td><button class="editButtons" data-id="${task.id}">Edit</button></td>
-          <td><button class="editButtons" data-id="${task.id}">Delete</button></td>
-        </tr> -->
-      </tbody>
-    </table>
-  </section>
+  <div id="outputWrapper">
+    <section id="taskOutputArea">
+      <table class="table table-sm table-hover">
+        <thead>
+          <tr>
+            <th id="taskDetails" colspan="3">Task Details</th>
+          </tr>
+        </thead>
+        <tbody id="taskOutput">
+          <!-- ⬇ Each TR will be appended below: -->
 
+        </tbody>
+      </table>
+    </section>
+  </div>
 </body>
 </html>

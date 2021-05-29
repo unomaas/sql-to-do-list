@@ -56,7 +56,7 @@ router.put('/:id', (req, res) => {
   let taskId = req.params.id;
   console.log('Task to mark complete is:', taskId);
   // ⬇ Declaring variables to compare and add to:
-  let complete = req.body.complete;
+  let complete = req.body.complete;  
   // ⬇ Creating queryText to send to SQL:
   let queryText = ``;
   // ⬇ Creating if else statement for queryText to send to SQL:

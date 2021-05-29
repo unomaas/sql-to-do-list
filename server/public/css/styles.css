@@ -1,7 +1,33 @@
-.inline {
-  display: inline;
+#headerWrapper {
+  text-align: left;
+  color: white;
+  background-color: #0D47A1;
+  padding: 20px;
 }
 
-ul {
-  list-style-type: none;
+body,
+#taskDetails {
+  text-align: center;
+  background-color: #E3F2FD;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#heading {
+  margin: 20px;
+  padding: 20px;
+}
+
+#outputWrapper {
+  display: inline-block;
+  text-align: left;
+  margin: 40px;
+  width: 50%;
+}
+
+#taskOutput {
+  vertical-align: middle;
+}
+ 
+.deleteButtons {
+  float: right;
 }
