@@ -10,8 +10,8 @@ $(document).ready(function () {
 
 // ⬇ Event handlers below:
 function addEventHandlers() {
-  $('#submitButton').on('click', clickedSubmit);
-  $('#taskOutput').on('click', $('.checkboxes'), markComplete);
+  $('#taskInputArea').on('click', '#submitButton', clickedSubmit);
+  $('#taskOutput').on('click', '.checkboxes', markComplete);
 } // End addEventHandlers()
 //#endregion ⬆⬆ All document setup & event handlers above. 
 
