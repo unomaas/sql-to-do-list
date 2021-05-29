@@ -49,12 +49,10 @@ router.post('/', (req, res) => {
 // Request must include a parameter indicating what book to update - the id
 // Request body must include the content to update - the status
 
+// ⬇ /tasks PUT functionality below:
 router.put('/:id', (req, res) => {
   console.log('In /tasks router PUT');
   // ⬇ Grabbing id task from the req params:
-  console.log('req.params is:', req.params);
-  console.log('req.body is:', req.body);
-  console.log('req.params.id is:', req.params.id);
   let taskId = req.params.id;
   console.log('Task to mark complete is:', taskId);
   // ⬇ Declaring variables to compare and add to:

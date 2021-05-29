@@ -34,8 +34,9 @@ function refreshDom() {
       $('#taskOutput').empty();
       // ⬇ Looping through the DB to append to DOM:
       for (let i = 0; i < tasks.length; i += 1) {
+        // ⬇ Saving each loop iteration to simple variable:
         let task = tasks[i];
-        // For each task, append a new row to our table
+        // ⬇ For each task, append a new row to the table:
         $('#taskOutput').append(`
           <tr>
             <td><input type="checkbox" class="checkboxes" data-id="${task.id}"></td>
@@ -75,8 +76,8 @@ function clickedSubmit() {
     }); // End .catch
 } // End clickedSubmit() 
 
-// {/* <td><button class="editButtons" data-id="${task.id}">Edit</button></td> */}
 
+// ⬇ markComplete PUT functionality below:
 function markComplete() {
   console.log('In markComplete');
   // ⬇ Saving the clicked task id to a variable: 
@@ -92,7 +93,7 @@ function markComplete() {
   }) // End .ajax
     .then(response => {
       console.log('In PUT /tasks, response:', response);
-      refreshBooks();
+      // refreshDom(); // I don't think this is needed to toggle class "complete". 
     }) // End .then
     .catch(error => {
       console.log('In PUT /tasks, error:', error);
