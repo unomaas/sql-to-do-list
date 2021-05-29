@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
   pool.query(queryText, [newTask.name])
     .then(result => {
       console.log('In /tasks POST .then, response:', res);
-      res.sendStatus(201);
+      res.sendStatus(201); // Created. 
     }) // End .then
     .catch(error => {
       console.log(`Error adding new book`, error);
@@ -81,26 +81,25 @@ router.put('/:id', (req, res) => {
 // TODO - DELETE 
 // Removes a book to show that it has been read
 // Request must include a parameter indicating what book to update - the id
-
-// router.delete( "/:id", ( req, res ) => {
-//   console.log( 'In router.delete' );
-//   // ⬇ Grabbing id of record to delete from the req params:
-//   const itemToDelete = req.params.id;
-//   console.log( 'The ID to delete is:', itemToDelete ); 
-//   // ⬇ Creating queryText to send to SQL:
-//   const queryText = `DELETE FROM "books" WHERE "books".id = $1;`;
-//   // ⬇ itemToDelete needs to be an array:
-//   pool.query( queryText, [itemToDelete] )
-//     .then( response => {
-//       console.log( 'Deleted the book with ID:', itemToDelete );
-//       res.sendStatus( 202 ); // "Accepted"
-//     }) // End .then
-//     .catch( error => {
-//       console.log( 'Unable to delete book. Error:', error );
-//       res.sendStatus( 500 );
-//     }); // End .catch
-// }) // End router.delete
-
+// ⬇ /tasks DELETE functionality below:
+router.delete("/:id", (req, res) => {
+  console.log('In router.delete');
+  // ⬇ Grabbing id of record to delete from the req params:
+  const itemToDelete = req.params.id;
+  console.log('The ID to delete is:', itemToDelete);
+  // ⬇ Creating queryText to send to SQL:
+  const queryText = `DELETE FROM "books" WHERE "books".id = $1;`;
+  // ⬇ itemToDelete needs to be an array:
+  pool.query(queryText, [itemToDelete])
+    .then(response => {
+      console.log('Deleted the book with ID:', itemToDelete);
+      res.sendStatus(202); // "Accepted"
+    }) // End .then
+    .catch(error => {
+      console.log('Unable to delete book. Error:', error);
+      res.sendStatus(500);
+    }); // End .catch
+}) // End router.delete
 //#endregion ⬆⬆ All CRUD routes above. 
 
 

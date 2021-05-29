@@ -11,13 +11,14 @@ $(document).ready(function () {
 // ⬇ Event handlers below:
 function addEventHandlers() {
   $('#taskInputArea').on('click', '#submitButton', clickedSubmit);
-  $('#taskOutput').on('click', '.checkboxes', markComplete);
+  $('#taskOutput').on('click', '.completeBoxes', clickedComplete);
+  $('#taskOutput').on('click', '.deleteButtons', clickedDelete);
 } // End addEventHandlers()
 //#endregion ⬆⬆ All document setup & event handlers above. 
 
 
 
-//#region ⬇⬇ All functions below:
+//#region ⬇⬇ All CRUD functions below:
 // ⬇ refreshDom GET functionality below:
 function refreshDom() {
   console.log('In refreshDom');
@@ -39,10 +40,10 @@ function refreshDom() {
         // ⬇ For each task, append a new row to the table:
         $('#taskOutput').append(`
           <tr>
-            <td><input type="checkbox" class="checkboxes" data-id="${task.id}"></td>
+            <td><input type="checkbox" class="completeBoxes" data-id="${task.id}"></td>
             <td>${task.name}</td>
             <td><button class="editButtons" data-id="${task.id}">Edit</button></td>
-            <td><button class="editButtons" data-id="${task.id}">Delete</button></td>
+            <td><button class="deleteButtons" data-id="${task.id}">Delete</button></td>
           </tr>
         `); // End #taskOutput append.
       } // End for loop.
@@ -77,11 +78,11 @@ function clickedSubmit() {
 } // End clickedSubmit() 
 
 
-// ⬇ markComplete PUT functionality below:
-function markComplete() {
-  console.log('In markComplete');
+// ⬇ clickedComplete PUT functionality below:
+function clickedComplete() {
+  console.log('In clickedComplete');
   // ⬇ Saving the clicked task id to a variable: 
-  let taskId = $(this).data("id"); // Something wrong here. 
+  let taskId = $(this).data("id"); 
   console.log('Task to mark complete is:', taskId);
   // ⬇ Sending that they marked it complete to the server:
   $.ajax({
@@ -93,41 +94,40 @@ function markComplete() {
   }) // End .ajax
     .then(response => {
       console.log('In PUT /tasks, response:', response);
-      // refreshDom(); // I don't think this is needed to toggle class "complete". 
+      // ⬇ Can I figure out a way to have the checkbox marked if complete === true on refresh?
+      // refreshDom();  
     }) // End .then
     .catch(error => {
       console.log('In PUT /tasks, error:', error);
       alert(`There was an error with marking complete:`, error)
     }); // End .catch
-}// End markComplete()
-//#endregion ⬆⬆ All functions above. 
+}// End clickedComplete()
+
+
+// ⬇ clickedDelete DELETE functionality below:
+function clickedDelete() {
+  console.log('In clickedDelete');
+  // ⬇ Saving the clicked task id to a variable: 
+  let taskId = $(this).data("id"); 
+  console.log('Task to delete is:', taskId);
+  // ⬇ Sending that they want to delete it to the server:
+  $.ajax({
+    method: 'DELETE', 
+    url: `tasks/${taskId}`
+  }) // End .ajax
+    .then(response => {
+      console.log('In DELETE /tasks, response:', response);
+      refreshDom();
+    }) // End .then
+    .catch(error => {
+      console.log('In DELETE /tasks, error:', error);
+      alert(`There was an error with deleting this task:`, error);
+    }); // End .catch
+} // End clickedDelete()
+//#endregion ⬆⬆ All CRUD functions above. 
 
 
 
-// Function to handle the click event and pass the book id to the deleteBook function:
-// function readHandler() {
-//   console.log('In readHandler');
-//   markedRead($(this).data("id"));
-// } // End readHandler()
-
-// function markedRead(bookId) {
-//   console.log('In markedRead');
-//   $.ajax({
-//     method: 'PUT',
-//     url: `books/${bookId}`,
-//     data: {
-//       isRead: true // Will be on: req.body.isRead
-//     }
-//   }) // End .ajax
-//     .then(response => {
-//       console.log('In PUT /books/id. Response:', response);
-//       refreshBooks();
-//     }) // End .then
-//     .catch(error => {
-//       console.log('In PUT /books/id. Error:', error);
-//       alert(`There was an error with markedRead:`, error)
-//     }); // End .catch
-// } // End markRead()
 
 // // Function to handle the click event and pass the book id to the deleteBook function:
 // function deleteHandler() {
@@ -150,40 +150,4 @@ function markComplete() {
 //       alert(`There was a problem deleting that book, please try again:`, error);
 //     }); // End .catch
 // } // End deleteBook()
-
-
-
-// // refreshBooks will get all books from the server and render to page
-// function refreshBooks() {
-//   $.ajax({
-//     type: 'GET',
-//     url: '/books'
-//   }).then(function (response) {
-//     console.log(response);
-//     renderBooks(response);
-//   }).catch(function (error) {
-//     console.log('error in GET', error);
-//   });
-// }
-
-
-// // Displays an array of books to the DOM
-// function renderBooks(books) {
-//   $('#bookShelf').empty();
-
-//   for (let i = 0; i < books.length; i += 1) {
-//     let book = books[i];
-//     // For each book, append a new row to our table
-//     $('#bookShelf').append(`
-//       <tr>
-//         <td>${book.title}</td>
-//         <td>${book.author}</td>
-//         <td>${book.isRead}</td>
-//         <td><button class="readButtons" data-id="${book.id}">Mark As Read</button></td>
-//         <td><button class="deleteButtons" data-id="${book.id}">Delete Book</button></td>
-//       </tr>
-//     `);
-//   }
-// }
-
 
