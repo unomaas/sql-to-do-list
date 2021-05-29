@@ -5,13 +5,16 @@ $(document).ready(function () {
   console.log('jQuery loaded!');
   refreshDom();
   addEventHandlers();
-}); // End document ready. 
+}); // End document ready
+
 
 // ⬇ Event handlers below:
 function addEventHandlers() {
-  $('#submitButton').on('click', clickedSubmit)
-} // End addEventHandlers(). 
+  $('#submitButton').on('click', clickedSubmit);
+  $('#taskOutput').on('click', $('.checkboxes'), markComplete);
+} // End addEventHandlers()
 //#endregion ⬆⬆ All document setup & event handlers above. 
+
 
 
 //#region ⬇⬇ All functions below:
@@ -47,9 +50,7 @@ function refreshDom() {
       console.log('In refreshDOM .catch, error:', error);
       alert('Unable to load page at this time, please try again later.')
     }) // End .catch
-} // End refreshDom().
-
-
+} // End refreshDom()
 
 
 // ⬇ clickedSubmit POST functionality below:
@@ -72,34 +73,35 @@ function clickedSubmit() {
       console.log('In clickedSubmit .catch, error:', error);
       alert('Unable to add task at this time, please try again later.')
     }); // End .catch
+} // End clickedSubmit() 
 
-} // End clickedSubmit(). 
+// {/* <td><button class="editButtons" data-id="${task.id}">Edit</button></td> */}
+
+function markComplete() {
+  console.log('In markComplete');
+  // ⬇ Saving the clicked task id to a variable: 
+  let taskId = $(this).data("id"); // Something wrong here. 
+  console.log('Task to mark complete is:', taskId);
+  // ⬇ Sending that they marked it complete to the server:
+  $.ajax({
+    method: 'PUT',
+    url: `tasks/${taskId}`,
+    data: {
+      complete: true // Will be on: req.body.complete
+    } // End data object
+  }) // End .ajax
+    .then(response => {
+      console.log('In PUT /tasks, response:', response);
+      refreshBooks();
+    }) // End .then
+    .catch(error => {
+      console.log('In PUT /tasks, error:', error);
+      alert(`There was an error with marking complete:`, error)
+    }); // End .catch
+}// End markComplete()
 //#endregion ⬆⬆ All functions above. 
 
-// function handleSubmit() {
-//   console.log('Submit button clicked.');
-//   let book = {};
-//   book.author = $('#author').val();
-//   book.title = $('#title').val();
-//   addBook(book);
-// } // End handleSubmit()
 
-// // adds a book to the database
-// function addBook(bookToAdd) {
-//   $.ajax({
-//     type: 'POST',
-//     url: '/books',
-//     data: bookToAdd,
-//   }) // End .ajax
-//     .then(function (response) {
-//       console.log('Response from server.', response);
-//       refreshBooks();
-//     }) // End .then
-//     .catch(function (error) {
-//       console.log('Error in POST', error)
-//       alert('Unable to add book at this time. Please try again later.');
-//     }); // End .catch
-// } // End addBook()
 
 // Function to handle the click event and pass the book id to the deleteBook function:
 // function readHandler() {

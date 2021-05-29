@@ -5,6 +5,7 @@ const pool = require('../modules/pool');
 //#endregion ⬆⬆ Document setup above. 
 
 
+
 //#region ⬇⬇ All CRUD routes below:
 // ⬇ /tasks GET functionality below:
 router.get('/', (req, res) => {
@@ -24,10 +25,8 @@ router.get('/', (req, res) => {
 }); // End /tasks GET
 
 
-// Adds a new book to the list of awesome reads
-// Request body must be a book object with a title and author.
 // ⬇ /tasks POST functionality below:
-router.post('/',  (req, res) => {
+router.post('/', (req, res) => {
   console.log('In /tasks router POST');
   // ⬇ Saving the req.body as a variable:
   let newTask = req.body;
@@ -50,33 +49,33 @@ router.post('/',  (req, res) => {
 // Request must include a parameter indicating what book to update - the id
 // Request body must include the content to update - the status
 
-// router.put( '/:id', ( req, res ) => {
-//   console.log( 'In router.put' );
-//   // ⬇ Grabbing id of record to delete from the req params:
-//   const bookId = req.params.id;
-//   console.log( 'The book to mark read is:', bookId );
-//   // ⬇ Declaring variables to compare and add to:
-//   let isRead = req.body.isRead;
-//   let queryText = ``;
-//   // ⬇ Creating if else statement for queryText to send to SQL:
-//   if ( isRead === 'true' ) {
-//     console.log( 'In router.put if isRead true' );
-//     queryText = `UPDATE "books" SET "isRead" = NOT "isRead" WHERE "books".id = $1;`;
-//   } else {
-//     console.log( 'In router.put else' );
-//     res.sendStatus( 500 );
-//     return;
-//   } // End if statement.
-//   pool.query( queryText, [bookId] )
-//     .then( response => {
-//       console.log( 'Marked isRead on book ID:', bookId );
-//       res.sendStatus( 202 ); // Accepted.
-//     }) // End .then
-//     .catch( error => {
-//       console.log( 'Unable to mark isRead. Error:', error );
-//       res.sendStatus( 500 );
-//     }); // End .catch
-// })
+router.put('/:id', (req, res) => {
+  console.log('In /tasks router PUT');
+  // ⬇ Grabbing id task from the req params:
+  let taskId = req.params.id;
+  console.log('Task to mark complete is:', taskId);
+  // ⬇ Declaring variables to compare and add to:
+  let complete = req.body.complete;
+  let queryText = ``;
+  // ⬇ Creating if else statement for queryText to send to SQL:
+  if (complete === 'true') {
+    console.log('In /tasks PUT if complete is true');
+    queryText = `UPDATE "tasks" SET "complete" = NOT "complete" WHERE "tasks".id = $1;`;
+  } else {
+    console.log('In /tasks PUT else');
+    res.sendStatus(500);
+    return; // Break early if bad.
+  } // End if statement.
+  pool.query(queryText, [taskId])
+    .then(response => {
+      console.log('Marked complete on tasks ID:', taskId);
+      res.sendStatus(202); // Accepted.
+    }) // End .then
+    .catch(error => {
+      console.log('Unable to mark complete, error:', error);
+      res.sendStatus(500);
+    }); // End .catch
+}); // End /tasks PUT
 
 // TODO - DELETE 
 // Removes a book to show that it has been read
