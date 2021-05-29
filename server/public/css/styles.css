@@ -20,16 +20,19 @@ body,
 #outputWrapper {
   display: inline-block;
   text-align: left;
-  margin: 40px;
-  width: 50%;
+  margin-top: 40px;
+  width: 80%;
+  max-width: 1100px;
 }
 
 #taskInput {
-  width: 40%;
+  width: 65%;
+  max-width: 900px;
 }
 
 #submitButton {
-  width: 10%;
+  width: 15%;
+  max-width: 200px;
 }
 
 #taskOutput {
@@ -39,3 +42,8 @@ body,
 .deleteButtons {
   float: right;
 }
+
+/* .completeBoxes {
+  float: left;
+  margin: 0;
+} */
