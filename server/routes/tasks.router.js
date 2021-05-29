@@ -57,6 +57,7 @@ router.put('/:id', (req, res) => {
   console.log('Task to mark complete is:', taskId);
   // ⬇ Declaring variables to compare and add to:
   let complete = req.body.complete;
+  // ⬇ Creating queryText to send to SQL:
   let queryText = ``;
   // ⬇ Creating if else statement for queryText to send to SQL:
   if (complete === 'true') {
@@ -67,9 +68,10 @@ router.put('/:id', (req, res) => {
     res.sendStatus(500);
     return; // Break early if bad.
   } // End if statement.
+  // ⬇ taskId needs to be an array:
   pool.query(queryText, [taskId])
     .then(response => {
-      console.log('Marked complete on tasks ID:', taskId);
+      console.log('Marked complete on task ID:', taskId);
       res.sendStatus(202); // Accepted.
     }) // End .then
     .catch(error => {
@@ -78,29 +80,31 @@ router.put('/:id', (req, res) => {
     }); // End .catch
 }); // End /tasks PUT
 
+
 // TODO - DELETE 
 // Removes a book to show that it has been read
 // Request must include a parameter indicating what book to update - the id
 // ⬇ /tasks DELETE functionality below:
 router.delete("/:id", (req, res) => {
-  console.log('In router.delete');
-  // ⬇ Grabbing id of record to delete from the req params:
-  const itemToDelete = req.params.id;
-  console.log('The ID to delete is:', itemToDelete);
+  console.log('In /tasks router DELETE');
+  // ⬇ Grabbing id task from the req params:
+  let taskId = req.params.id;
+  console.log('Task to delete is:', taskId);
   // ⬇ Creating queryText to send to SQL:
-  const queryText = `DELETE FROM "books" WHERE "books".id = $1;`;
-  // ⬇ itemToDelete needs to be an array:
-  pool.query(queryText, [itemToDelete])
+  let queryText = `DELETE FROM "tasks" WHERE "tasks".id = $1;`;
+  // ⬇ taskId needs to be an array:
+  pool.query(queryText, [taskId])
     .then(response => {
-      console.log('Deleted the book with ID:', itemToDelete);
+      console.log('Deleted the task with ID:', taskId);
       res.sendStatus(202); // "Accepted"
     }) // End .then
     .catch(error => {
-      console.log('Unable to delete book. Error:', error);
+      console.log('Unable to delete task, error:', error);
       res.sendStatus(500);
     }); // End .catch
-}) // End router.delete
+}) // End /tasks DELETE
 //#endregion ⬆⬆ All CRUD routes above. 
+
 
 
 module.exports = router;
