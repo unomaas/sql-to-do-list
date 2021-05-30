@@ -7,7 +7,9 @@ const pool = require('../modules/pool');
 
 
 //#region ⬇⬇ All CRUD routes below:
-// ⬇ /tasks GET functionality below:
+/** ⬇ /tasks GET functionality:
+ * Router function to handle the GET part of the server-side logic.  Will send SQL query to pull all of the tasks from the DB to update on the DOM.
+ */
 router.get('/', (req, res) => {
   console.log('In /tasks router GET');
   // ⬇ Declaring the SQL commands below:
@@ -25,7 +27,9 @@ router.get('/', (req, res) => {
 }); // End /tasks GET
 
 
-// ⬇ /tasks POST functionality below:
+/** ⬇ /tasks POST functionality:
+ * Router function to handle the POST part of the server-side logic.  Will send SQL query to add a new task to the DB and output to DOM. 
+ */
 router.post('/', (req, res) => {
   console.log('In /tasks router POST');
   // ⬇ Saving the req.body as a variable:
@@ -44,12 +48,10 @@ router.post('/', (req, res) => {
     }); // End .catch
 }); // End /tasks POST
 
-// TODO - PUT
-// Updates a book to show that it has been read
-// Request must include a parameter indicating what book to update - the id
-// Request body must include the content to update - the status
 
-// ⬇ /tasks PUT functionality below:
+/** ⬇ /tasks PUT functionality:
+ * Router function to handle the PUT part of the server-side logic.  Will send SQL query to update the task.complete property.  Set to a toggle switch of off or on.
+ */
 router.put('/:id', (req, res) => {
   console.log('In /tasks router PUT');
   // ⬇ Grabbing id task from the req params:
@@ -81,8 +83,9 @@ router.put('/:id', (req, res) => {
 }); // End /tasks PUT
 
 
-
-// ⬇ /tasks DELETE functionality below:
+/** ⬇ /tasks DELETE functionality:
+ * Router function to handle the DELETE part of the server-side logic.  Will send SQL query to delete the entire row from the DB.  
+ */
 router.delete("/:id", (req, res) => {
   console.log('In /tasks router DELETE');
   // ⬇ Grabbing id task from the req params:
@@ -104,5 +107,5 @@ router.delete("/:id", (req, res) => {
 //#endregion ⬆⬆ All CRUD routes above. 
 
 
-
+// ⬇ Export below:
 module.exports = router;

@@ -43,10 +43,9 @@ body,
   float: right;
 }
 
-.completeBoxes:checked {
-  background-color: green!important;
-}
+
 
 .strikethrough {
   text-decoration: line-through;
+  color: green;
 }
