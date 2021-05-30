@@ -43,7 +43,10 @@ body,
   float: right;
 }
 
-/* .completeBoxes {
-  float: left;
-  margin: 0;
-} */
+.completeBoxes:checked {
+  background-color: green!important;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}

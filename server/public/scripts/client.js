@@ -48,14 +48,16 @@ function refreshDom() {
         $('#taskOutput').append(`
           <tr>
             <td><input type="checkbox" class="completeBoxes" id="box${task.id}" data-id="${task.id}"></td>
-            <td>${task.name}</td>
+            <td id="name${task.id}">${task.name}</td>
             <td><button class="deleteButtons btn btn-danger" data-id="${task.id}">${trashIcon}</button></td>
           </tr>
-        `); // End #taskOutput append.
+        `); // End #taskOutput append
+        // ⬇ If task complete is true, mark the checkbox and strike the text:
         if (task.complete === true) {
           $(`#box${task.id}`).prop('checked', true);
-        }
-      } // End for loop.
+          $(`#name${task.id}`).addClass("strikethrough");
+        }; // End if statement
+      } // End for loop
     }) // End .then
     .catch(error => {
       console.log('In refreshDOM .catch, error:', error);
