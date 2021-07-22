@@ -13,16 +13,20 @@ This is a web based application that interacts with a virtual server and databas
 ## Prerequisites
 
 Node.js: https://nodejs.org/en/
+
 Bootstrap: https://getbootstrap.com/ 
+
 PostgreSQL: https://www.postgresql.org/
 
 
 ## Installation
 
 To run this program, you will need to:
+
 -- [] Build the database in your SQL server with the code in "database.sql" file. 
+
 -- [] Run 'npm install' in your terminal.
--- [] Run 'npm install pg' in your terminal.  
+
 -- [] Run 'npm start' in your terminal.
 
 
