@@ -1,4 +1,4 @@
-# T2W9HW - Ryan's jQuery/Postgresql To Do List App
+## T2W9HW - Ryan's jQuery/Postgresql To Do List App
 
 Thanks for looking into my weekend project, the jQuery/Postgresql To Do List web app! 
 
