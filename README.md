@@ -3,14 +3,14 @@
 Thanks for looking into my weekend project, the jQuery/Postgresql To Do List web app! 
 
 
-## Description
+## Description:
 
 Duration: Weekend Sprint
 
 This is a web based application that interacts with a virtual server and database to run a simple "To Do List" tracker.  The goal of this project was to get more hands on experience building an app that uses all CRUD functionality with a server and database running. 
 
 
-## Prerequisites
+## Prerequisites:
 
 - Node.js: https://nodejs.org/en/
 
@@ -19,7 +19,7 @@ This is a web based application that interacts with a virtual server and databas
 - PostgreSQL: https://www.postgresql.org/
 
 
-## Installation
+## Installation:
 
 To run this program, you will need to:
 
@@ -30,7 +30,7 @@ To run this program, you will need to:
 - [] Run 'npm start' in your terminal.
 
 
-### Usage
+### Usage:
 
 - #1. To use this app, start the server in your terminal.  Navigate to http://localhost:5000/ in your browser.  
 
@@ -41,16 +41,16 @@ To run this program, you will need to:
 - #4. The tasks and completed history will persist through page refreshes and server restarts.  
 
 
-### Built With
+### Built With:
 
 JavaScript/HTML/CSS, jQuery, Node, Bootstrap, Ajax, PG. 
 
 
-### Acknowledgement
+### Acknowledgement:
 
 I'd like to give thanks to Dane Smith and everyone in Pod 3 for helping me get through this week at Prime Digital Academy!  I wouldn't be here today without them.  
 
 
-### Support
+### Support:
 
 If you have suggestions or issues, please email me at rdmjobs@live.com.
