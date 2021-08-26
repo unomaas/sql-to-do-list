@@ -1,22 +1,22 @@
-## T2W9HW - Ryan's jQuery/Postgresql To Do List App
+# jQuery/Postgresql To Do List App
 
 Thanks for looking into my weekend project, the jQuery/Postgresql To Do List web app! 
 
 
 ## Description
 
-Duration: 3 Day Sprint
+Duration: Weekend Sprint
 
 This is a web based application that interacts with a virtual server and database to run a simple "To Do List" tracker.  The goal of this project was to get more hands on experience building an app that uses all CRUD functionality with a server and database running. 
 
 
 ## Prerequisites
 
-Node.js: https://nodejs.org/en/
+-- Node.js: https://nodejs.org/en/
 
-Bootstrap: https://getbootstrap.com/ 
+-- Bootstrap: https://getbootstrap.com/ 
 
-PostgreSQL: https://www.postgresql.org/
+-- PostgreSQL: https://www.postgresql.org/
 
 
 ## Installation
@@ -32,13 +32,13 @@ To run this program, you will need to:
 
 ### Usage
 
-#1. To use this app, start the server in your terminal.  Navigate to http://localhost:5000/ in your browser.  
+- #1. To use this app, start the server in your terminal.  Navigate to http://localhost:5000/ in your browser.  
 
-#2. It's auto-populated with four placeholder tasks (which are cheeky lyrics from a song).  Press the red trash icon to delete a row, or add your own rows with "Enter a Task Name" input field. 
+- #2. It's auto-populated with four placeholder tasks (which are cheeky lyrics from a song).  Press the red trash icon to delete a row, or add your own rows with "Enter a Task Name" input field. 
 
-#3. Click the "completed" checkbox to mark a task as complete, which strikes through the text and changes it to green (success!). 
+- #3. Click the "completed" checkbox to mark a task as complete, which strikes through the text and changes it to green (success!). 
 
-#4. The tasks and completed history will persist through page refreshes and server restarts.  
+- #4. The tasks and completed history will persist through page refreshes and server restarts.  
 
 
 ### Built With
